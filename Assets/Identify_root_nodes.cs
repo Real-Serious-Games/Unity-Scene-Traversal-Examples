@@ -1,11 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Identify_root_nodes : MonoBehaviour
 {
 
-	void Start ()
+	void Start()
     {
+        // Note that you can't execute this code in Awake.
+        var rootObjects = SceneManager.GetActiveScene().GetRootGameObjects();
+        foreach (var gameObject in rootObjects)
+        {
+            Debug.Log(gameObject.name);
+        }
+
+        /*
+         * Pre Unity 5.3 code.
+         * 
         GameObject[] allGameObjects = GameObject.FindObjectsOfType<GameObject>();
 
         foreach (var gameObject in allGameObjects)
@@ -17,5 +28,6 @@ public class Identify_root_nodes : MonoBehaviour
                 Debug.Log(gameObject.name);
             }
         }
+        */
     }
 }
